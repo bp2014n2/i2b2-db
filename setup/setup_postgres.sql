@@ -1,0 +1,18 @@
+CREATE USER i2b2demodata WITH PASSWORD 'demouser';
+CREATE SCHEMA i2b2demodata;
+GRANT ALL ON SCHEMA i2b2demodata TO i2b2demodata;
+CREATE USER i2b2hive WITH PASSWORD 'demouser';
+CREATE SCHEMA i2b2hive;
+GRANT ALL ON SCHEMA i2b2hive TO i2b2hive;
+CREATE USER i2b2imdata WITH PASSWORD 'demouser';
+CREATE SCHEMA i2b2imdata;
+GRANT ALL ON SCHEMA i2b2imdata TO i2b2imdata;
+CREATE USER i2b2metadata WITH PASSWORD 'demouser';
+CREATE SCHEMA i2b2metadata;
+GRANT ALL ON SCHEMA i2b2metadata TO i2b2metadata;
+CREATE USER i2b2pm WITH PASSWORD 'demouser';
+CREATE SCHEMA i2b2pm;
+GRANT ALL ON SCHEMA i2b2pm TO i2b2pm;
+CREATE USER i2b2workdata WITH PASSWORD 'demouser';
+CREATE SCHEMA i2b2workdata;
+GRANT ALL ON SCHEMA i2b2workdata TO i2b2workdata;
