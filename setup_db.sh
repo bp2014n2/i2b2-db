@@ -18,9 +18,11 @@ echo "######################"
 
 # setup environment
 export I2B2_DB_HOME=`pwd`
+cd ~
 mkdir log
-export LOG_FILE=`echo ~`/log/db_setup_log.txt
+export LOG_FILE=`pwd`/log/db_setup_log.txt
 touch $LOG_FILE
+cd $I2B2_DB_HOME
 
 echo "Installing software"
 progress &
