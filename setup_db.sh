@@ -118,6 +118,6 @@ progPid=$!
     sudo -u postgres psql -d i2b2 -f Datensatz/sql/region-meta.sql
     sudo -u postgres psql -d i2b2 -f Datensatz/sql/geschlecht-meta.sql
     sudo -u postgres psql -d i2b2 -f setup/create_indexes_and_constraints.sql    
-    sudo -u postgres psql -d i2b2 -f setup/setup_table_access_table.sql.sql
+    sudo -u postgres psql -d i2b2 -f setup/setup_table_access_table.sql
 } >>$LOG_FILE
 echo "" ; kill -13 "$progPid";
