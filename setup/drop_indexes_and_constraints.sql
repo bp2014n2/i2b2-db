@@ -11,3 +11,5 @@ DROP INDEX i2b2demodata.OF_IDX_Encounter_Patient;
 DROP INDEX i2b2demodata.OF_IDX_UPLOADID;
 DROP INDEX i2b2demodata.OF_IDX_SOURCESYSTEM_CD;
 DROP INDEX i2b2demodata.OF_TEXT_SEARCH_UNIQUE;
+DROP INDEX i2b2demodata.pd_idx_name_char;
+DROP INDEX i2b2demodata.pd_idx_uploadid;
