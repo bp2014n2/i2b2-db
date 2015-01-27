@@ -46,9 +46,9 @@ progPid=$!
     unzip i2b2createdb-1704.zip
     #mkdir ~/.aws
     #echo -e "[default]\naws_access_key_id=$aws_access_key_id\naws_secret_access_key=$aws_secret_access_key" >> ~/.aws/credentials
-    aws s3 cp --region eu-central-1 s3://eha-hpcc/i2b2daten/12-01-2015/Datensatz.zip Datensatz.zip
-    unzip Datensatz.zip
-    sudo chmod 755 -R ./Datensatz
+    #aws s3 cp --region eu-central-1 s3://eha-hpcc/i2b2daten/12-01-2015/Datensatz.zip Datensatz.zip
+    #unzip Datensatz.zip
+    #sudo chmod 755 -R ./Datensatz
 } >>$LOG_FILE
 echo "" ; kill -13 "$progPid";
 
