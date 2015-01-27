@@ -80,45 +80,6 @@ progPid=$!
     ant -f data_build.xml db_workdata_load_data
     cd $I2B2_DB_HOME
     sudo -u postgres psql -d i2b2 -f setup/setup_giri.sql
-} >>$LOG_FILE
-echo "" ; kill -13 "$progPid";
-
-echo "Loading data... "
-progress &
-progPid=$!
-{
-    sudo -u postgres psql -d i2b2 -f setup/drop_indexes_and_constraints.sql
-    sudo -u postgres psql -d i2b2 -c "TRUNCATE i2b2demodata.observation_fact;
-    COPY i2b2demodata.observation_fact(ENCOUNTER_NUM, PATIENT_NUM, CONCEPT_CD, PROVIDER_ID, START_DATE, MODIFIER_CD, INSTANCE_NUM, VALTYPE_CD, TVAL_CHAR, NVAL_NUM, VALUEFLAG_CD, QUANTITY_NUM, UNITS_CD, END_DATE, LOCATION_CD, OBSERVATION_BLOB, CONFIDENCE_NUM, UPDATE_DATE, DOWNLOAD_DATE, IMPORT_DATE, SOURCESYSTEM_CD, UPLOAD_ID) FROM '`pwd`/Datensatz/csv/observation_fact.csv' DELIMITER '|' CSV;
-    TRUNCATE i2b2demodata.patient_mapping;
-    COPY i2b2demodata.patient_mapping(PATIENT_IDE, PATIENT_IDE_SOURCE, PATIENT_NUM, PATIENT_IDE_STATUS, PROJECT_ID, UPLOAD_DATE, UPDATE_DATE, DOWNLOAD_DATE, IMPORT_DATE, SOURCESYSTEM_CD, UPLOAD_ID) FROM '`pwd`/Datensatz/csv/patient_mapping.csv' DELIMITER '|' CSV;
-    TRUNCATE i2b2demodata.provider_dimension;
-    COPY i2b2demodata.provider_dimension(PROVIDER_ID, PROVIDER_PATH, NAME_CHAR, PROVIDER_BLOB, UPDATE_DATE, DOWNLOAD_DATE, IMPORT_DATE, SOURCESYSTEM_CD, UPLOAD_ID) FROM '`pwd`/Datensatz/csv/provider_dimension.csv' DELIMITER '|' CSV;
-    TRUNCATE i2b2demodata.patient_dimension;
-    COPY i2b2demodata.patient_dimension(PATIENT_NUM, VITAL_STATUS_CD, BIRTH_DATE, DEATH_DATE, SEX_CD, AGE_IN_YEARS_NUM, LANGUAGE_CD, RACE_CD, MARITAL_STATUS_CD, RELIGION_CD, ZIP_CD, STATECITYZIP_PATH, INCOME_CD, PATIENT_BLOB, UPDATE_DATE, DOWNLOAD_DATE, IMPORT_DATE, SOURCESYSTEM_CD, UPLOAD_ID) FROM '`pwd`/Datensatz/csv/patient_dimension.csv' DELIMITER '|' CSV;
-    TRUNCATE i2b2demodata.visit_dimension;
-    ALTER TABLE i2b2demodata.visit_dimension ADD COLUMN AGE_IN_YEARS INT NULL;
-    ALTER TABLE i2b2demodata.visit_dimension ADD COLUMN TREATMENT INT NULL;
-    COPY i2b2demodata.visit_dimension(ENCOUNTER_NUM, PATIENT_NUM, ACTIVE_STATUS_CD, START_DATE, END_DATE, INOUT_CD, LOCATION_CD, LOCATION_PATH, LENGTH_OF_STAY, VISIT_BLOB, UPDATE_DATE, DOWNLOAD_DATE, IMPORT_DATE, SOURCESYSTEM_CD, UPLOAD_ID, AGE_IN_YEARS, TREATMENT) FROM '`pwd`/Datensatz/csv/visit_dimension.csv' DELIMITER '|' CSV;"
-    sudo -u postgres psql -d i2b2 -f Datensatz/sql/atc-concept-dimension.sql
-    sudo -u postgres psql -d i2b2 -f Datensatz/sql/icd-concept-dimension.sql
-    sudo -u postgres psql -d i2b2 -f Datensatz/sql/ops-concept-dimension.sql
-    sudo -u postgres psql -d i2b2 -f Datensatz/sql/ontology.sql
-    sudo -u postgres psql -d i2b2 -f Datensatz/sql/atc-meta.sql
-    sudo -u postgres psql -d i2b2 -f Datensatz/sql/icd-meta.sql
-    sudo -u postgres psql -d i2b2 -f Datensatz/sql/modifier_dimension.sql
-    sudo -u postgres psql -d i2b2 -f Datensatz/sql/modifier-meta.sql
-    sudo -u postgres psql -d i2b2 -f Datensatz/sql/modifier-meta_2.sql
-    sudo -u postgres psql -d i2b2 -f Datensatz/sql/fg-meta.sql
-    sudo -u postgres psql -d i2b2 -f Datensatz/sql/kh-meta.sql
-    sudo -u postgres psql -d i2b2 -f Datensatz/sql/ops-meta.sql
-    sudo -u postgres psql -d i2b2 -f Datensatz/sql/visit-meta.sql
-    sudo -u postgres psql -d i2b2 -f setup/insert_basecodes.sql
-    sudo -u postgres psql -d i2b2 -f Datensatz/sql/stammdaten.sql
-    sudo -u postgres psql -d i2b2 -f Datensatz/sql/alter-meta.sql
-    sudo -u postgres psql -d i2b2 -f Datensatz/sql/region-meta.sql
-    sudo -u postgres psql -d i2b2 -f Datensatz/sql/geschlecht-meta.sql
-    sudo -u postgres psql -d i2b2 -f setup/create_indexes_and_constraints.sql    
-    sudo -u postgres psql -d i2b2 -f setup/setup_table_access_table.sql
+    sudo -u postgres psql -d i2b2 -f setup/setup_report.sql
 } >>$LOG_FILE
 echo "" ; kill -13 "$progPid";
