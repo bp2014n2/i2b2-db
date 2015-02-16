@@ -9,7 +9,7 @@
   STRING50 sourcesystem_cd;
   UNSIGNED5 upload_id;
 END;
-modDim := DATASET([{'\\Diagnosesicherheit\\', 'DS', 'Diagnosesicherheit', '', '2014-01-01 00:00:00', '', '', 'DEMO', ''},
-{'\\Diagnoseart\\', 'DA', 'Diagnoseart', '', '2014-01-01 00:00:00', '', '', 'DEMO', ''},
+modDim := DATASET([{'\\Diagnosesicherheit\\', 'DS', 'Ambulant: Diagnosesicherheit', '', '2014-01-01 00:00:00', '', '', 'DEMO', ''},
+{'\\Diagnoseart\\', 'DA', 'Stationär: Diagnoseart', '', '2014-01-01 00:00:00', '', '', 'DEMO', ''},
 {'\\Prozedurtyp\\', 'PT', 'Typ', '', '2014-01-01 00:00:00', '', '', 'DEMO', ''}],Layout_modDim);
 OUTPUT(modDim,,'~i2b2demodata::modifier_dimension',OVERWRITE);
