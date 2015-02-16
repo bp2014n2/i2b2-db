@@ -46,7 +46,7 @@ progPid=$!
     unzip i2b2createdb-1704.zip
     #mkdir ~/.aws
     #echo -e "[default]\naws_access_key_id=$aws_access_key_id\naws_secret_access_key=$aws_secret_access_key" >> ~/.aws/credentials
-    aws s3 cp --region eu-central-1 s3://eha-hpcc/i2b2daten/12-01-2015/Datensatz.zip Datensatz.zip
+    aws s3 cp --region eu-central-1 s3://eha-hpcc/i2b2daten/19-01-2015/Datensatz.zip Datensatz.zip
     unzip Datensatz.zip
     sudo chmod 755 -R ./Datensatz
 } >>$LOG_FILE
@@ -107,7 +107,6 @@ progPid=$!
     sudo -u postgres psql -d i2b2 -f Datensatz/sql/icd-meta.sql
     sudo -u postgres psql -d i2b2 -f Datensatz/sql/modifier_dimension.sql
     sudo -u postgres psql -d i2b2 -f Datensatz/sql/modifier-meta.sql
-    sudo -u postgres psql -d i2b2 -f Datensatz/sql/modifier-meta_2.sql
     sudo -u postgres psql -d i2b2 -f Datensatz/sql/fg-meta.sql
     sudo -u postgres psql -d i2b2 -f Datensatz/sql/kh-meta.sql
     sudo -u postgres psql -d i2b2 -f Datensatz/sql/ops-meta.sql
