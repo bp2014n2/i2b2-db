@@ -1,4 +1,4 @@
-Layout_code_lookup := RECORD
+EXPORT VIRTUAL code_lookup := RECORD
   STRING100 table_cd;
   STRING100 column_cd;
   STRING50 code_cd;
@@ -11,5 +11,3 @@ Layout_code_lookup := RECORD
   STRING50 sourcesystem_cd;
   UNSIGNED5 upload_id;
 END;
-code_lookup := DATASET([], Layout_code_lookup, FLAT);
-OUTPUT(code_lookup,,'~i2b2demodata::code_lookup',OVERWRITE);

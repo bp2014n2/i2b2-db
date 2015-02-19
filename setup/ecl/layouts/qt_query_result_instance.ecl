@@ -1,4 +1,4 @@
-Layout_qt_query_result_instance := RECORD
+EXPORT VIRTUAL qt_query_result_instance := RECORD
   UNSIGNED5 result_instance_id;
   UNSIGNED5 query_instance_id;
   UNSIGNED5 result_type_id;
@@ -12,5 +12,3 @@ Layout_qt_query_result_instance := RECORD
   UNSIGNED5 real_set_size;
   STRING500 obfusc_method;
 END;
-qt_query_result_instance := DATASET([], Layout_qt_query_result_instance, FLAT);
-OUTPUT(qt_query_result_instance,,'~i2b2demodata::qt_query_result_instance',OVERWRITE);

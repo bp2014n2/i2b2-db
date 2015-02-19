@@ -1,6 +1,7 @@
-Layout_set_upload_status := RECORD
+EXPORT VIRTUAL upload_status := RECORD
   UNSIGNED5 upload_id;
-  UNSIGNED5 set_type_id;
+  STRING500 upload_label;
+  STRING100 user_id;
   STRING50 source_cd;
   UNSIGNED no_of_record;
   UNSIGNED loaded_record;
@@ -13,5 +14,3 @@ Layout_set_upload_status := RECORD
   STRING log_file_name;
   STRING500 transform_name;
 END;
-set_upload_status := DATASET([], Layout_set_upload_status, FLAT);
-OUTPUT(set_upload_status,,'~i2b2demodata::set_upload_status',OVERWRITE);

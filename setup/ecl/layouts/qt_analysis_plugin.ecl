@@ -1,4 +1,4 @@
-Layout_qt_analysis_plugin := RECORD
+EXPORT VIRTUAL qt_analysis_plugin := RECORD
   UNSIGNED5 plugin_id;
   STRING2000 plugin_name;
   STRING2000 description;
@@ -15,5 +15,3 @@ Layout_qt_analysis_plugin := RECORD
   STRING25 create_date;
   STRING25 update_date;
 END;
-qt_analysis_plugin := DATASET([], Layout_qt_analysis_plugin, FLAT);
-OUTPUT(qt_analysis_plugin,,'~i2b2demodata::qt_analysis_plugin',OVERWRITE);

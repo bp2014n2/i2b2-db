@@ -1,4 +1,4 @@
-Layout_encounter_mapping := RECORD
+EXPORT VIRTUAL encounter_mapping := RECORD
   STRING200 encounter_ide;
   STRING50 encounter_ide_source;
   STRING50 project_id;
@@ -13,5 +13,3 @@ Layout_encounter_mapping := RECORD
   STRING50 sourcesystem_cd;
   UNSIGNED5 upload_id;
 END;
-encounter_mapping := DATASET([], Layout_encounter_mapping, FLAT);
-OUTPUT(encounter_mapping,,'~i2b2demodata::encounter_mapping',OVERWRITE);

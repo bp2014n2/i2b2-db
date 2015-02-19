@@ -1,9 +1,0 @@
-Layout_qt_breakdown_path := RECORD
-  STRING100 name character varying(100),
-  STRING2000 value character varying(2000),
-  STRING25 create_date timestamp without time zone,
-  STRING25 update_date timestamp without time zone,
-  STRING50 user_id character varying(50)
-END;
-qt_breakdown_path := DATASET([], Layout_qt_breakdown_path, FLAT);
-OUTPUT(qt_breakdown_path,,'~i2b2demodata::qt_breakdown_path',OVERWRITE);

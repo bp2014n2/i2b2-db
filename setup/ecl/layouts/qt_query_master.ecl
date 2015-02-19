@@ -1,4 +1,4 @@
-Layout_qt_query_master := RECORD
+EXPORT VIRTUAL qt_query_master := RECORD
   UNSIGNED5 query_master_id;
   STRING250 name;
   STRING50 user_id;
@@ -12,5 +12,3 @@ Layout_qt_query_master := RECORD
   STRING generated_sql;
   STRING i2b2_request_xml;
 END;
-qt_query_master := DATASET([], Layout_qt_query_master, FLAT);
-OUTPUT(qt_query_master,,'~i2b2demodata::qt_query_master',OVERWRITE);

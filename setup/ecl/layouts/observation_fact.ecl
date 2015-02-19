@@ -1,4 +1,4 @@
-Layout_archive_observation_fact := RECORD
+EXPORT VIRTUAL observation_fact := RECORD
  UNSIGNED5 encounter_num;
  UNSIGNED5 patient_num;
  STRING50 concept_cd;
@@ -22,5 +22,3 @@ Layout_archive_observation_fact := RECORD
  STRING50 sourcesystem_cd;
  UNSIGNED5 upload_id;
 END;
-archive_observation_fact := DATASET([], Layout_archive_observation_fact, FLAT);
-OUTPUT(archive_observation_fact,,'~i2b2demodata::archive_observation_fact',OVERWRITE);
