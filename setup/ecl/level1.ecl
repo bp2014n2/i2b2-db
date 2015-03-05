@@ -1,5 +1,4 @@
-IMPORT STD;
-Layout_Obs := RECORD
+﻿observation_fact_record := RECORD
  UNSIGNED5 encounter_num;
  UNSIGNED5 patient_num;
  STRING50 concept_cd;
@@ -23,7 +22,7 @@ Layout_Obs := RECORD
  STRING50 sourcesystem_cd;
  UNSIGNED5 upload_id;
 END;
-Layout_ProDim := RECORD
+provider_dimension_record := RECORD
   STRING50 provider_id;
   STRING700 provider_path;
   STRING850 name_char;
@@ -34,7 +33,9 @@ Layout_ProDim := RECORD
   STRING50 sourcesystem_cd;
   UNSIGNED5 upload_id;
 END;
-observation_fact := DATASET('~i2b2demodata::observation_fact',Layout_Obs,FLAT);
-provider_dimension := DATASET('~i2b2demodata::provider_dimension',Layout_ProDim,FLAT);
-valid_ids := SET(provider_dimension(Std.Str.StartsWith(provider_path,'\\PROVIDER\\ARZT\\01\\')),provider_id);
-OUTPUT(observation_fact(provider_id IN valid_ids),{patient_num});
+observation_fact := DATASET('~i2b2demodata::observation_fact',observation_fact_record,FLAT);
+provider_dimension := DATASET('~i2b2demodata::provider_dimension',provider_dimension_record,FLAT);
+valid_ids := SET(provider_dimension(provider_path[1..18]='\\PROVIDER\\ARZT\\01\\'),provider_id);
+ergebnis := observation_fact(provider_id IN valid_ids);
+ergebnis_grouped := TABLE(ergebnis,{patient_num},patient_num);
+count(ergebnis_grouped);
