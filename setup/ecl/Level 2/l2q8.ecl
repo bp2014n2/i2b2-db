@@ -57,9 +57,9 @@ modifier_dimension_record := RECORD
   UNSIGNED5 upload_id;
 END;
 observation_fact := DATASET('~i2b2demodata::observation_fact',observation_fact_record,FLAT);
-provider_dimension := DATASET('~i2b2demodata::provider_dimension',provider_dimension_record,FLAT);
+concept_dimension := DATASET('~i2b2demodata::concept_dimension',concept_dimension_record,FLAT);
+modifier_dimension := DATASET('~i2b2demodata::modifier_dimension',modifier_dimension_record,FLAT);
 query_global_temp := DATASET('~i2b2demodata::query_global_temp',query_global_temp_record,FLAT);
-oldFile := (STRING)'\'~'+Std.File.GetSuperFileSubName('~i2b2demodata::query_global_temp', 1)+'\'';
 valid_pns := SET(observation_fact(
   (concept_cd IN 
     SET(concept_dimension(concept_path[1..21]='\\ICD\\F00-F99\\F30-F39\\'),concept_cd)) 
@@ -82,6 +82,7 @@ updates := TABLE(TABLE(query_global_temp(patient_num IN valid_pns,panel_count=2)
 OUTPUT(query_global_temp(patient_num NOT IN valid_pns) + updates,,'~i2b2demodata::output_20150305150845',OVERWRITE);
 SEQUENTIAL(
 Std.File.StartSuperFileTransaction(),
-Std.File.ReplaceSuperFile(SuperFile, oldFile, '~i2b2demodata::output_20150305150845'),
-Std.File.FinishSuperFileTransaction(),
-Std.File.DeleteLogicalFile(oldFile));
+STD.File.ClearSuperFile('~i2b2demodata::query_global_temp'),
+STD.File.DeleteLogicalFile((STRING)'~' + Std.File.GetSuperFileSubName('~i2b2demodata::query_global_temp', 1)),
+Std.File.AddSuperFile('~i2b2demodata::query_global_temp','~i2b2demodata::output_20150305150845'),
+Std.File.FinishSuperFileTransaction());

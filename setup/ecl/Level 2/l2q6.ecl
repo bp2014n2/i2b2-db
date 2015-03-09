@@ -60,14 +60,16 @@ observation_fact := DATASET('~i2b2demodata::observation_fact',observation_fact_r
 concept_dimension := DATASET('~i2b2demodata::concept_dimension',concept_dimension_record,FLAT);
 modifier_dimension := DATASET('~i2b2demodata::modifier_dimension',modifier_dimension_record,FLAT);
 query_global_temp := DATASET('~i2b2demodata::query_global_temp',query_global_temp_record,FLAT);
-oldFile := (STRING)'\'~'+Std.File.GetSuperFileSubName('~i2b2demodata::query_global_temp', 1)+'\'';
-valid_pns := SET(observation_fact((concept_cd IN valid_con_cds2) 
-	AND (modifier_cd IN valid_mod_cds) 
+valid_pns := SET(observation_fact(
+  (concept_cd IN 
+	  SET(concept_dimension(concept_path[1..25]='\\ICD\\M00-M99\\M50-M54\\M54\\'),concept_cd)) 
+	AND (modifier_cd IN 
+	  SET(modifier_dimension(modifier_path[1..20]='\\Diagnosesicherheit\\'),modifier_cd)) 
 	AND (valtype_cd = 'T') 
 	AND (tval_char = 'G') 
 	AND (start_date >= '2011-01-01T00:00:00')
 	AND (start_date <= '2012-01-01T00:00:00')),patient_num);
-updates := TABLE(TABLE(query_global_temp(patient_num IN valid_pns),{patient_num}),
+updates := TABLE(TABLE(query_global_temp(patient_num IN valid_pns, panel_count == 0),{patient_num}),
   {UNSIGNED5 encounter_num := '',
    patient_num,
    UNSIGNED5 instance_num := '',
@@ -77,9 +79,10 @@ updates := TABLE(TABLE(query_global_temp(patient_num IN valid_pns),{patient_num}
    UNSIGNED5 panel_count := 1,
    UNSIGNED5 fact_count := '',
    UNSIGNED5 fact_panels := ''});
-OUTPUT(query_global_temp(patient_num NOT IN valid_pns) + updates,,'~i2b2demodata::output_20150305150836',OVERWRITE);
+OUTPUT(query_global_temp(patient_num NOT IN SET(updates, patient_num)) + updates,,'~i2b2demodata::output_20150305150836',OVERWRITE);
 SEQUENTIAL(
 Std.File.StartSuperFileTransaction(),
-Std.File.ReplaceSuperFile(SuperFile, oldFile, '~i2b2demodata::output_20150305150836'),
-Std.File.FinishSuperFileTransaction(),
-Std.File.DeleteLogicalFile(oldFile));
+STD.File.ClearSuperFile('~i2b2demodata::query_global_temp'),
+STD.File.DeleteLogicalFile((STRING)'~' + Std.File.GetSuperFileSubName('~i2b2demodata::query_global_temp', 1)),
+Std.File.AddSuperFile('~i2b2demodata::query_global_temp', '~i2b2demodata::output_20150305150836'),
+Std.File.FinishSuperFileTransaction());

@@ -77,10 +77,10 @@ inserts := TABLE(t,
    UNSIGNED5 panel_count := 0,
    UNSIGNED5 fact_count := '',
    UNSIGNED5 fact_panels := ''});
-OUTPUT(query_global_temp + inserts,,'~i2b2demodata::query_global_temp_20150305150833',OVERWRITE);
+OUTPUT(query_global_temp + inserts,,'~i2b2demodata::output_20150305150833',OVERWRITE);
 SEQUENTIAL(
 STD.File.StartSuperFileTransaction(),
 STD.File.ClearSuperFile('~i2b2demodata::query_global_temp'),
 STD.File.DeleteLogicalFile((STRING)'~' + Std.File.GetSuperFileSubName('~i2b2demodata::query_global_temp', 1)),
-STD.File.AddSuperFile('~i2b2demodata::query_global_temp','~i2b2demodata::query_global_temp_20150305150833'),
+STD.File.AddSuperFile('~i2b2demodata::query_global_temp','~i2b2demodata::output_20150305150833'),
 STD.File.FinishSuperFileTransaction());
