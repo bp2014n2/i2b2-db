@@ -79,6 +79,6 @@ progPid=$!
     ant -f data_build.xml create_workdata_tables_release_1-7
     ant -f data_build.xml db_workdata_load_data
     cd $I2B2_DB_HOME
-    sudo -u postgres psql -d i2b2 -f setup/setup_report.sql
+    sudo -u postgres psql -d i2b2 -f setup/setup_girix.sql
 } >>$LOG_FILE
 echo "" ; kill -13 "$progPid";
