@@ -19,3 +19,5 @@ COPY i2b2demodata.avk_fdb_t_leistungskosten(patient_num, datum, summe_aller_kost
 							   apothekenkosten, krankenhauskosten, hilfsmittel, heilmittel, dialysesachkosten, 
 							   krankengeld) 
 FROM '/home/ubuntu/leistungskosten/leistungskosten.csv' WITH DELIMITER '|' CSV;
+
+ALTER TABLE i2b2demodata.AVK_FDB_T_Leistungskosten ADD PRIMARY KEY (patient_num, datum);
