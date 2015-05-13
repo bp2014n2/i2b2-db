@@ -7,7 +7,7 @@
   STRING25 download_date;
   STRING25 import_date;
   STRING50 sourcesystem_cd;
-  UNSIGNED5 upload_id;
+  INTEGER5 upload_id;
 END;
 conDim := DATASET([{'\\OPS\\Operationen\\Operationen an den Bewegungsorganen\\Operationen an Muskeln, Sehnen, Faszien und Schleimbeuteln\\Naht und andere Operationen an Sehnen und Sehnenscheide: Tenodese eine Sehne, sekundär: Oberschenkel und Knie\\', 'OPS:585588', '585588 Naht und andere Operationen an Sehnen und Sehnenscheide: Tenodese eine Sehne, sekundär: Oberschenkel und Knie', '', '', '', '', '', ''},
 {'\\OPS\\Operationen\\Operationen an den Bewegungsorganen\\Operationen an anderen Knochen\\Andere Operationen am Knochen: Sonstige: Femur proximal\\', 'OPS:5789xf', '5789xf Andere Operationen am Knochen: Sonstige: Femur proximal', '', '', '', '', '', ''},

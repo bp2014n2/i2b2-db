@@ -7,7 +7,7 @@
   STRING25 download_date;
   STRING25 import_date;
   STRING50 sourcesystem_cd;
-  UNSIGNED5 upload_id;
+  INTEGER5 upload_id;
 END;
 conDim := DATASET([{'\\OPS\\Operationen\\Operationen am Herzen\\Operationen an den Koronargefäßen\\Anlegen eines aortokoronaren Bypass: Bypass vierfach: Sonstige\\', 'OPS:53613x', '53613x Anlegen eines aortokoronaren Bypass: Bypass vierfach: Sonstige', '', '', '', '', '', ''},
 {'\\OPS\\Operationen\\Operationen an den Bewegungsorganen\\Arthroskopische Gelenkoperationen\\Arthroskopische Operation am Gelenkknorpel und an den Menisken: Knorpelglättung (Chondroplastik): Tarsalgelenk\\', 'OPS:5812en', '5812en Arthroskopische Operation am Gelenkknorpel und an den Menisken: Knorpelglättung (Chondroplastik): Tarsalgelenk', '', '', '', '', '', ''},

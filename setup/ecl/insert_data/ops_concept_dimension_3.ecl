@@ -7,7 +7,7 @@
   STRING25 download_date;
   STRING25 import_date;
   STRING50 sourcesystem_cd;
-  UNSIGNED5 upload_id;
+  INTEGER5 upload_id;
 END;
 conDim := DATASET([{'\\OPS\\Nichtoperative therapeutische Maßnahmen\\Maßnahmen für den Blutkreislauf\\Therapeutische Katheterisierung und Kanüleneinlage in Gefäße\\Perkutan-transluminale Gefäßintervention an Herz und Koronargefäßen: N.n.bez.\\', 'OPS:8837y', '8837y Perkutan-transluminale Gefäßintervention an Herz und Koronargefäßen: N.n.bez.', '', '', '', '', '', ''},
 {'\\OPS\\Operationen\\Operationen am Verdauungstrakt\\Operationen am Anus\\Rekonstruktion des Anus und des Sphinkterapparates: Wechsel eines künstlichen Analsphinkters und seiner Komponenten: Zwei Komponenten (z.B. Verbindungspumpe und Ballon) eines hydraulischen Systems\\', 'OPS:5496a3', '5496a3 Rekonstruktion des Anus und des Sphinkterapparates: Wechsel eines künstlichen Analsphinkters und seiner Komponenten: Zwei Komponenten (z.B. Verbindungspumpe und Ballon) eines hydraulischen Systems', '', '', '', '', '', ''},
