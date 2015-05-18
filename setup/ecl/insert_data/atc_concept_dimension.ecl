@@ -1,14 +1,14 @@
 ﻿Layout_ConDim := RECORD
-  STRING700 concept_path;
-  STRING50 concept_cd;
-  STRING2000 name_char;
-  STRING concept_blob;
-  STRING25 update_date;
-  STRING25 download_date;
-  STRING25 import_date;
-  STRING50 sourcesystem_cd;
-  UNSIGNED5 upload_id;
-END;
+  string700 concept_path;
+  string50 concept_cd;
+  string2000 name_char;
+  string concept_blob;
+  string25 update_date;
+  string25 download_date;
+  string25 import_date;
+  string50 sourcesystem_cd;
+  integer5 upload_id;
+ END;
 conDim := DATASET([{'\\ATC\\N\\06\\B\\A\\04\\', 'ATC:N06BA04', 'N06BA04 Methylphenidat', '', '', '', '', '', ''},
 {'\\ATC\\A\\01\\A\\A\\30\\', 'ATC:A01AA30', 'A01AA30 Kombinationen', '', '', '', '', '', ''},
 {'\\ATC\\C\\03\\E\\A\\', 'ATC:C03EA', 'C03EA Low-ceiling-Diuretika und Kalium sparende Mittel', '', '', '', '', '', ''},
