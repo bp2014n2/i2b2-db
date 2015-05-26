@@ -1,4 +1,4 @@
-DATA_LOC="Datensatz/"
+DATA_LOC=pwd"/Datensatz/"
 
 if [ $# -ge 1 ]
 then
