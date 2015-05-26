@@ -18,10 +18,8 @@ echo "######################"
 
 # setup environment
 export I2B2_DB_HOME=`pwd`
-cd ~
-mkdir log
-export LOG_FILE=`pwd`/log/db_setup_log.txt
-touch $LOG_FILE
+mkdir -p $HOME/log
+export LOG_FILE=$HOME/log/db_setup_log.txt
 cd $I2B2_DB_HOME
 
 echo "Installing software"
@@ -32,9 +30,7 @@ progPid=$!
     echo "deb http://apt.postgresql.org/pub/repos/apt/ trusty-pgdg main" | tee /etc/apt/sources.list.d/pgdg.list
     wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add -
     apt-get update
-    apt-get install -y ant unzip python-pip bc postgresql-9.4
-    pip install six==1.8.0
-    pip install awscli
+    apt-get install -y ant unzip bc postgresql-9.4
 } >>$LOG_FILE
 echo "" ; kill -13 "$progPid";
 
@@ -46,12 +42,6 @@ progPid=$!
     wget -q http://54.93.194.56/i2b2createdb-1704.zip
     unzip i2b2createdb-1704.zip
     rm i2b2createdb-1704.zip
-    #mkdir ~/.aws
-    #echo -e "[default]\naws_access_key_id=$aws_access_key_id\naws_secret_access_key=$aws_secret_access_key" >> ~/.aws/credentials
-    aws s3 cp --region eu-central-1 s3://eha-hpcc/i2b2daten/19-01-2015/Datensatz.zip Datensatz.zip
-    unzip Datensatz.zip
-    rm Datensatz.zip
-    chmod 755 -R ./Datensatz
 } >>$LOG_FILE
 echo "" ; kill -13 "$progPid";
 
@@ -93,23 +83,23 @@ progPid=$!
 {
     cd $I2B2_DB_HOME
     sudo -u postgres psql -d i2b2 -c "TRUNCATE i2b2demodata.concept_dimension;"
-    sudo -u postgres psql -d i2b2 -f Datensatz/sql/atc-concept-dimension.sql
-    sudo -u postgres psql -d i2b2 -f Datensatz/sql/icd-concept-dimension.sql
-    sudo -u postgres psql -d i2b2 -f Datensatz/sql/ops-concept-dimension.sql
-    sudo -u postgres psql -d i2b2 -f Datensatz/sql/ontology.sql
-    sudo -u postgres psql -d i2b2 -f Datensatz/sql/atc-meta.sql
-    sudo -u postgres psql -d i2b2 -f Datensatz/sql/icd-meta.sql
-    sudo -u postgres psql -d i2b2 -f Datensatz/sql/modifier_dimension.sql
-    sudo -u postgres psql -d i2b2 -f Datensatz/sql/modifier-meta.sql
-    sudo -u postgres psql -d i2b2 -f Datensatz/sql/fg-meta.sql
-    sudo -u postgres psql -d i2b2 -f Datensatz/sql/kh-meta.sql
-    sudo -u postgres psql -d i2b2 -f Datensatz/sql/ops-meta.sql
-    sudo -u postgres psql -d i2b2 -f Datensatz/sql/visit-meta.sql
+    sudo -u postgres psql -d i2b2 -f setup/sql/atc-concept-dimension.sql
+    sudo -u postgres psql -d i2b2 -f setup/sql/icd-concept-dimension.sql
+    sudo -u postgres psql -d i2b2 -f setup/sql/ops-concept-dimension.sql
+    sudo -u postgres psql -d i2b2 -f setup/sql/ontology.sql
+    sudo -u postgres psql -d i2b2 -f setup/sql/atc-meta.sql
+    sudo -u postgres psql -d i2b2 -f setup/sql/icd-meta.sql
+    sudo -u postgres psql -d i2b2 -f setup/sql/modifier_dimension.sql
+    sudo -u postgres psql -d i2b2 -f setup/sql/modifier-meta.sql
+    sudo -u postgres psql -d i2b2 -f setup/sql/fg-meta.sql
+    sudo -u postgres psql -d i2b2 -f setup/sql/kh-meta.sql
+    sudo -u postgres psql -d i2b2 -f setup/sql/ops-meta.sql
+    sudo -u postgres psql -d i2b2 -f setup/sql/visit-meta.sql
     sudo -u postgres psql -d i2b2 -f setup/insert_basecodes.sql
-    sudo -u postgres psql -d i2b2 -f Datensatz/sql/stammdaten.sql
-    sudo -u postgres psql -d i2b2 -f Datensatz/sql/alter-meta.sql
-    sudo -u postgres psql -d i2b2 -f Datensatz/sql/region-meta.sql
-    sudo -u postgres psql -d i2b2 -f Datensatz/sql/geschlecht-meta.sql
+    sudo -u postgres psql -d i2b2 -f setup/sql/stammdaten.sql
+    sudo -u postgres psql -d i2b2 -f setup/sql/alter-meta.sql
+    sudo -u postgres psql -d i2b2 -f setup/sql/region-meta.sql
+    sudo -u postgres psql -d i2b2 -f setup/sql/geschlecht-meta.sql
     sudo -u postgres psql -d i2b2 -f setup/setup_table_access_table.sql
     sudo -u postgres psql -d i2b2 -f setup/breakdown_statistics.sql
     sudo -u postgres psql -d i2b2 -f setup/setup_girix.sql

@@ -1,0 +1,4 @@
+TRUNCATE i2b2demodata.modifier_dimension;
+INSERT INTO i2b2demodata.modifier_dimension(modifier_path, modifier_cd, name_char, modifier_blob, update_date, download_date, import_date, sourcesystem_cd, upload_id ) VALUES ('\Diagnosesicherheit\', 'DS', 'Ambulant: Diagnosesicherheit', NULL, '2014-01-01 00:00:00', null, null, 'DEMO', NULL);
+INSERT INTO i2b2demodata.modifier_dimension(modifier_path, modifier_cd, name_char, modifier_blob, update_date, download_date, import_date, sourcesystem_cd, upload_id ) VALUES ('\Diagnoseart\', 'DA', 'Stationär: Diagnoseart', NULL, '2014-01-01 00:00:00', null, null, 'DEMO', NULL);
+INSERT INTO i2b2demodata.modifier_dimension(modifier_path, modifier_cd, name_char, modifier_blob, update_date, download_date, import_date, sourcesystem_cd, upload_id ) VALUES ('\Prozedurtyp\', 'PT', 'Typ', NULL, '2014-01-01 00:00:00', null, null, 'DEMO', NULL);
