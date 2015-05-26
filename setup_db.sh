@@ -83,23 +83,23 @@ progPid=$!
 {
     cd $I2B2_DB_HOME
     sudo -u postgres psql -d i2b2 -c "TRUNCATE i2b2demodata.concept_dimension;"
-    sudo -u postgres psql -d i2b2 -f setup/sql/atc-concept-dimension.sql
-    sudo -u postgres psql -d i2b2 -f setup/sql/icd-concept-dimension.sql
-    sudo -u postgres psql -d i2b2 -f setup/sql/ops-concept-dimension.sql
-    sudo -u postgres psql -d i2b2 -f setup/sql/ontology.sql
-    sudo -u postgres psql -d i2b2 -f setup/sql/atc-meta.sql
-    sudo -u postgres psql -d i2b2 -f setup/sql/icd-meta.sql
-    sudo -u postgres psql -d i2b2 -f setup/sql/modifier_dimension.sql
-    sudo -u postgres psql -d i2b2 -f setup/sql/modifier-meta.sql
-    sudo -u postgres psql -d i2b2 -f setup/sql/fg-meta.sql
-    sudo -u postgres psql -d i2b2 -f setup/sql/kh-meta.sql
-    sudo -u postgres psql -d i2b2 -f setup/sql/ops-meta.sql
-    sudo -u postgres psql -d i2b2 -f setup/sql/visit-meta.sql
+    sudo -u postgres psql -d i2b2 -f setup/atc-concept-dimension.sql
+    sudo -u postgres psql -d i2b2 -f setup/icd-concept-dimension.sql
+    sudo -u postgres psql -d i2b2 -f setup/ops-concept-dimension.sql
+    sudo -u postgres psql -d i2b2 -f setup/ontology.sql
+    sudo -u postgres psql -d i2b2 -f setup/atc-meta.sql
+    sudo -u postgres psql -d i2b2 -f setup/icd-meta.sql
+    sudo -u postgres psql -d i2b2 -f setup/modifier_dimension.sql
+    sudo -u postgres psql -d i2b2 -f setup/modifier-meta.sql
+    sudo -u postgres psql -d i2b2 -f setup/fg-meta.sql
+    sudo -u postgres psql -d i2b2 -f setup/kh-meta.sql
+    sudo -u postgres psql -d i2b2 -f setup/ops-meta.sql
+    sudo -u postgres psql -d i2b2 -f setup/visit-meta.sql
     sudo -u postgres psql -d i2b2 -f setup/insert_basecodes.sql
-    sudo -u postgres psql -d i2b2 -f setup/sql/stammdaten.sql
-    sudo -u postgres psql -d i2b2 -f setup/sql/alter-meta.sql
-    sudo -u postgres psql -d i2b2 -f setup/sql/region-meta.sql
-    sudo -u postgres psql -d i2b2 -f setup/sql/geschlecht-meta.sql
+    sudo -u postgres psql -d i2b2 -f setup/stammdaten.sql
+    sudo -u postgres psql -d i2b2 -f setup/alter-meta.sql
+    sudo -u postgres psql -d i2b2 -f setup/region-meta.sql
+    sudo -u postgres psql -d i2b2 -f setup/geschlecht-meta.sql
     sudo -u postgres psql -d i2b2 -f setup/setup_table_access_table.sql
     sudo -u postgres psql -d i2b2 -f setup/breakdown_statistics.sql
     sudo -u postgres psql -d i2b2 -f setup/setup_girix.sql
