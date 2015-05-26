@@ -18,4 +18,6 @@ sudo -u postgres psql -d i2b2 -c "TRUNCATE i2b2demodata.visit_dimension;"
 sudo -u postgres psql -d i2b2 -c "ALTER TABLE i2b2demodata.visit_dimension ADD COLUMN AGE_IN_YEARS INT NULL;"
 sudo -u postgres psql -d i2b2 -c "ALTER TABLE i2b2demodata.visit_dimension ADD COLUMN TREATMENT INT NULL;"
 sudo -u postgres psql -d i2b2 -c "COPY i2b2demodata.visit_dimension(ENCOUNTER_NUM, PATIENT_NUM, ACTIVE_STATUS_CD, START_DATE, END_DATE, INOUT_CD, LOCATION_CD, LOCATION_PATH, LENGTH_OF_STAY, VISIT_BLOB, UPDATE_DATE, DOWNLOAD_DATE, IMPORT_DATE, SOURCESYSTEM_CD, UPLOAD_ID, AGE_IN_YEARS, TREATMENT) FROM '`echo $DATA_LOC`/csv/visit_dimension.csv' DELIMITER '|' CSV;"
+sudo -u postgres psql -d i2b2 -c "TRUNCATE i2b2demodata.avk_fdb_t_leistungskosten;"
+sudo -u postgres psql -d i2b2 -c "COPY i2b2demodata.avk_fdb_t_leistungskosten FROM '`echo $DATA_LOC`/csv/leistungskosten.csv' DELIMITER '|' CSV;"
 sudo -u postgres psql -d i2b2 -f setup/create_indexes_and_constraints.sql

@@ -3,6 +3,7 @@ ALTER TABLE i2b2demodata.patient_mapping ADD CONSTRAINT patient_mapping_pk PRIMA
 ALTER TABLE i2b2demodata.provider_dimension ADD CONSTRAINT provider_dimension_pk PRIMARY KEY(PROVIDER_PATH, PROVIDER_ID);
 ALTER TABLE i2b2demodata.patient_dimension ADD CONSTRAINT patient_dimension_pk PRIMARY KEY(PATIENT_NUM);
 ALTER TABLE i2b2demodata.visit_dimension ADD CONSTRAINT visit_dimension_pk PRIMARY KEY(encounter_num, patient_num);
+ALTER TABLE i2b2demodata.avk_fdb_t_leistungskosten ADD CONSTRAINT avk_fdb_t_leistungskosten_pkey PRIMARY KEY(patient_num, datum);
 CREATE  INDEX OF_IDX_ClusteredConcept ON i2b2demodata.OBSERVATION_FACT( CONCEPT_CD );
 CREATE INDEX OF_IDX_ALLObservation_Fact ON i2b2demodata.OBSERVATION_FACT( PATIENT_NUM , ENCOUNTER_NUM , CONCEPT_CD , START_DATE , PROVIDER_ID , MODIFIER_CD , INSTANCE_NUM, VALTYPE_CD , TVAL_CHAR , NVAL_NUM , VALUEFLAG_CD , QUANTITY_NUM , UNITS_CD , END_DATE , LOCATION_CD , CONFIDENCE_NUM);
 CREATE INDEX OF_IDX_Start_Date ON i2b2demodata.OBSERVATION_FACT(START_DATE, PATIENT_NUM);
@@ -15,3 +16,4 @@ CREATE  INDEX VD_IDX_AGE_IN_YEARS ON i2b2demodata.VISIT_DIMENSION (AGE_IN_YEARS)
 CREATE  INDEX VD_IDX_TREATMENT ON i2b2demodata.VISIT_DIMENSION (TREATMENT);
 CREATE  INDEX pd_idx_name_char ON i2b2demodata.PROVIDER_DIMENSION (provider_id COLLATE pg_catalog."default", name_char COLLATE pg_catalog."default");
 CREATE  INDEX pd_idx_uploadid ON i2b2demodata.PROVIDER_DIMENSION (upload_id);
+CREATE  INDEX AVK_IDX_PSM ON i2b2demodata.avk_fdb_t_leistungskosten(patient_num, datum, summe_aller_kosten);

@@ -82,6 +82,8 @@ progPid=$!
     cd ../Workdata
     ant -f data_build.xml create_workdata_tables_release_1-7
     ant -f data_build.xml db_workdata_load_data
+    sudo -u postgres psql -d i2b2 -c "CREATE TABLE i2b2demodata.avk_fdb_t_leistungskosten (patient_num integer NOT NULL,  datum date NOT NULL,summe_aller_kosten real,  arztkosten real,  zahnarztkosten real,  apothekenkosten real,  krankenhauskosten real,  hilfsmittel real,  heilmittel real,  dialysesachkosten real,  krankengeld real);"
+    sudo -u postgres psql -d i2b2 -c "ALTER TABLE i2b2demodata.avk_fdb_t_leistungskosten OWNER TO i2b2demodata;"
 } >>$LOG_FILE
 echo "" ; kill -13 "$progPid";
 
