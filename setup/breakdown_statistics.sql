@@ -2,3 +2,5 @@ UPDATE i2b2demodata.qt_breakdown_path SET value = '\\EVA_META_STAMMDATEN\Stammda
 UPDATE i2b2demodata.qt_breakdown_path SET value = '\\EVA_META_STAMMDATEN\Stammdaten\Sex\' WHERE name = 'PATIENT_GENDER_COUNT_XML';
 DELETE FROM i2b2demodata.qt_query_result_instance WHERE result_type_id IN (SELECT result_type_id FROM i2b2demodata.qt_query_result_type WHERE name = 'PATIENT_RACE_COUNT_XML');
 DELETE FROM i2b2demodata.qt_query_result_type WHERE name = 'PATIENT_RACE_COUNT_XML';
+DELETE FROM i2b2demodata.qt_query_result_instance WHERE result_type_id IN (SELECT result_type_id FROM i2b2demodata.qt_query_result_type WHERE name = 'PATIENT_VITALSTATUS_COUNT_XML');
+DELETE FROM i2b2demodata.qt_query_result_type WHERE name = 'PATIENT_VITALSTATUS_COUNT_XML';
