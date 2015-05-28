@@ -19,4 +19,4 @@ avk_fdb_t_leistungskosten_idx_all_queried := INDEX(avk_fdb_t_leistungskosten, {p
 BUILD(avk_fdb_t_leistungskosten_idx_all_queried, SORT ALL, OVERWRITE);
 
 description := 'XDBC:RelIndexes=[i2b2demodata::avk_fdb_t_leistungskosten_idx]';
-STD.File.SetFileDescription('~i2b2demodata::avk_fdb_t_leistungskosten',desc);
+STD.File.SetFileDescription('~i2b2demodata::avk_fdb_t_leistungskosten',description);

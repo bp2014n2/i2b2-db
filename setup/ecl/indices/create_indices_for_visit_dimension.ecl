@@ -52,4 +52,4 @@ visit_dimension_idx_age_in_years := INDEX(visit_dimension, {age_in_years}, {pati
 BUILD(visit_dimension_idx_age_in_years, SORT ALL, OVERWRITE);
 
 description := 'XDBC:RelIndexes=[i2b2demodata::visit_dimension_idx_start_date_length_of_stay_age_in_years;i2b2demodata::visit_dimension_idx_start_date;i2b2demodata::visit_dimension_idx_treatment;i2b2demodata::visit_dimension_idx_length_of_stay_treatment;i2b2demodata::visit_dimension_idx_length_of_stay;i2b2demodata::visit_dimension_idx_all_queried;i2b2demodata::visit_dimension_idx_age_in_years_treatment;i2b2demodata::visit_dimension_idx_age_in_years_start_date;i2b2demodata::visit_dimension_idx_age_in_years;i2b2demodata::visit_dimension_idx_start_date_treatment]';
-STD.File.SetFileDescription('~i2b2demodata::visit_dimension',desc);
+STD.File.SetFileDescription('~i2b2demodata::visit_dimension',description);

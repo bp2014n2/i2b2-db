@@ -42,4 +42,4 @@ observation_fact_idx_inverted_all := INDEX(observation_fact, {concept_cd,start_d
 BUILD(observation_fact_idx_inverted_concept_cd, SORT ALL, OVERWRITE);
 
 description := 'XDBC:RelIndexes=[i2b2demodata::observation_fact_idx_all_queried;i2b2demodata::observation_fact_idx_inverted_patient_num;i2b2demodata::observation_fact_idx_inverted_concept_cd;i2b2demodata::observation_fact_idx_inverted_provider_id;i2b2demodata::observation_fact_idx_all]';
-STD.File.SetFileDescription('~i2b2demodata::observation_fact',desc);
+STD.File.SetFileDescription('~i2b2demodata::observation_fact',description);
