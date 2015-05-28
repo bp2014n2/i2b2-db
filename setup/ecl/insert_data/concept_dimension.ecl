@@ -10,13 +10,13 @@ Layout_ConDim := RECORD
   STRING50 sourcesystem_cd;
   INTEGER5 upload_id;
 END;
-//conDimIcd := DATASET('~i2b2demodata::concept_dimension_icd',Layout_ConDim,FLAT);
-//conDimAtc := DATASET('~i2b2demodata::concept_dimension',Layout_ConDim,FLAT);
-//conDimOps1 := DATASET('~i2b2demodata::concept_dimension_ops_1',Layout_ConDim,FLAT);
-//conDimOps2 := DATASET('~i2b2demodata::concept_dimension_ops_2',Layout_ConDim,FLAT);
-//conDimOps3 := DATASET('~i2b2demodata::concept_dimension_ops_3',Layout_ConDim,FLAT);
-//conDim := conDimAtc + conDimIcd + conDimOps1 + conDimOps2 + conDimOps3;
-//OUTPUT(conDim,,'~i2b2demodata::concept_dimension12345678',OVERWRITE);
+conDimIcd := DATASET('~i2b2demodata::concept_dimension_icd',Layout_ConDim,FLAT);
+conDimAtc := DATASET('~i2b2demodata::concept_dimension_atc',Layout_ConDim,FLAT);
+conDimOps1 := DATASET('~i2b2demodata::concept_dimension_ops_1',Layout_ConDim,FLAT);
+conDimOps2 := DATASET('~i2b2demodata::concept_dimension_ops_2',Layout_ConDim,FLAT);
+conDimOps3 := DATASET('~i2b2demodata::concept_dimension_ops_3',Layout_ConDim,FLAT);
+conDim := conDimAtc + conDimIcd + conDimOps1 + conDimOps2 + conDimOps3;
+OUTPUT(conDim,,'~i2b2demodata::concept_dimension12345678',OVERWRITE);
 SEQUENTIAL(STD.File.StartSuperFileTransaction(),
 STD.File.CreateSuperFile('~i2b2demodata::concept_dimension'),
 STD.File.AddSuperFile('~i2b2demodata::concept_dimension','~i2b2demodata::concept_dimension12345678'),

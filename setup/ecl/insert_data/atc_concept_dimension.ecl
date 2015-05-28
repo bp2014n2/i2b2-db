@@ -1943,4 +1943,4 @@ conDim := DATASET([{'\\ATC\\N\\06\\B\\A\\04\\', 'ATC:N06BA04', 'N06BA04 Methylph
 {'\\ATC\\A\\07\\X\\A\\', 'ATC:A07XA', 'A07XA Andere Antidiarrhoika', '', '', '', '', '', ''},
 {'\\ATC\\B\\05\\X\\A\\', 'ATC:B05XA', 'B05XA Elektrolytlösungen', '', '', '', '', '', ''},
 {'\\ATC\\B\\02\\B\\D\\03\\', 'ATC:B02BD03', 'B02BD03 Faktor-VIII-Inhibitor-bypass-Aktivität', '', '', '', '', '', ''}],Layout_ConDim);
-OUTPUT(conDim,,'~i2b2demodata::concept_dimension',OVERWRITE);
+OUTPUT(conDim,,'~i2b2demodata::concept_dimension_atc',OVERWRITE);
