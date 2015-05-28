@@ -17,4 +17,4 @@ provider_dimension_idx_all_queried := INDEX(provider_dimension, {provider_path},
 BUILD(provider_dimension_idx_all_queried, SORT ALL, OVERWRITE);
 
 description := 'XDBC:RelIndexes=[i2b2demodata::provider_dimension_idx_all_queried]';
-STD.File:SetFileDescription('~i2b2demodata::provider_dimension',desc);
+STD.File.SetFileDescription('~i2b2demodata::provider_dimension',desc);

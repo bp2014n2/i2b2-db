@@ -36,4 +36,4 @@ patient_dimension_idx_sex := INDEX(patient_dimension, {sex_cd, birth_date}, {pat
 BUILD(patient_dimension_idx_sex, SORT ALL, OVERWRITE);
 
 description := 'XDBC:RelIndexes=[i2b2demodata::patient_dimension_idx_statecityzip_path_all;i2b2demodata::patient_dimension_idx_statecityzip_path;i2b2demodata::patient_dimension_idx_birth_date;i2b2demodata::patient_dimension_idx_sex_cd_birth_date]';
-STD.File:SetFileDescription('~i2b2demodata::patient_dimension',desc);
+STD.File.SetFileDescription('~i2b2demodata::patient_dimension',desc);

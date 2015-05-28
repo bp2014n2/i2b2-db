@@ -20,4 +20,4 @@ concept_dimension_idx_inverted_cp := INDEX(concept_dimension, {concept_path}, {c
 BUILD(concept_dimension_idx_inverted_cp, SORT ALL, OVERWRITE);
 
 description := 'XDBC:RelIndexes=[i2b2demodata::concept_dimension_idx_concept_cd;i2b2demodata::concept_dimension_idx_inverted_concept_path]';
-STD.File:SetFileDescription('~i2b2demodata::concept_dimension',desc);
+STD.File.SetFileDescription('~i2b2demodata::concept_dimension',desc);
