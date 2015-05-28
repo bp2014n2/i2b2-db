@@ -1,6 +1,6 @@
 #!/bin/bash
 
-GIRIX_LOC = localhost:9090
+GIRIX_LOC=localhost:9090
 
 if [ $# -ge 1 ]
 then
