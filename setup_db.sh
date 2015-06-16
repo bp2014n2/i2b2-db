@@ -89,18 +89,17 @@ progPid=$!
     sudo -u postgres psql -d i2b2 -f setup/ontology.sql
     sudo -u postgres psql -d i2b2 -f setup/atc-meta.sql
     sudo -u postgres psql -d i2b2 -f setup/icd-meta.sql
-    sudo -u postgres psql -d i2b2 -f setup/modifier_dimension.sql
-    sudo -u postgres psql -d i2b2 -f setup/modifier-meta.sql
     sudo -u postgres psql -d i2b2 -f setup/fg-meta.sql
     sudo -u postgres psql -d i2b2 -f setup/kh-meta.sql
     sudo -u postgres psql -d i2b2 -f setup/ops-meta.sql
     sudo -u postgres psql -d i2b2 -f setup/visit-meta.sql
-    sudo -u postgres psql -d i2b2 -f setup/insert_basecodes.sql
     sudo -u postgres psql -d i2b2 -f setup/stammdaten.sql
     sudo -u postgres psql -d i2b2 -f setup/alter-meta.sql
     sudo -u postgres psql -d i2b2 -f setup/region-meta.sql
     sudo -u postgres psql -d i2b2 -f setup/geschlecht-meta.sql
-    sudo -u postgres psql -d i2b2 -f setup/setup_table_access_table.sql
+    sudo -u postgres psql -d i2b2 -f setup/modifier_dimension.sql
+    sudo -u postgres psql -d i2b2 -f setup/modifier-meta.sql
+    sudo -u postgres psql -d i2b2 -f setup/insert_basecodes.sql
     sudo -u postgres psql -d i2b2 -f setup/breakdown_statistics.sql
     sudo -u postgres psql -d i2b2 -f setup/setup_girix.sql
 } >>$LOG_FILE
